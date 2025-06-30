@@ -6,7 +6,6 @@ import { EducationalResources } from '@/components/sections/educational-resource
 import { HeroSection } from '@/components/sections/hero-section'
 import { InteractiveTools } from '@/components/sections/interactive-tools'
 import { MungerModels } from '@/components/sections/munger-models'
-import { PortfolioTracker } from '@/components/sections/portfolio-tracker'
 import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar'
 
 export default function Home() {
@@ -22,7 +21,6 @@ export default function Home() {
               <BuffettPrinciples />
               <MungerModels />
               <InteractiveTools />
-              <PortfolioTracker />
               <EducationalResources />
             </div>
           </main>

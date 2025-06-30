@@ -3,12 +3,7 @@
 import { useState, useMemo } from 'react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Slider } from '@/components/ui/slider'
-import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Button } from '@/components/ui/button'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { CheckCircle, XCircle, HelpCircle } from 'lucide-react'
 
 const CompoundInterestCalculator = () => {
   const [initial, setInitial] = useState(1000)
@@ -60,79 +55,6 @@ const CompoundInterestCalculator = () => {
   )
 }
 
-const quizQuestions = [
-    {
-        question: "A company has a famous brand name that everyone loves and trusts. Does this sound like a company with a strong 'Economic Moat'?",
-        options: ["Yes, a strong brand is a great moat.", "No, brand names don't matter."],
-        answer: "Yes, a strong brand is a great moat.",
-        explanation: "Correct! A powerful brand, like Coca-Cola's, is a classic example of an economic moat because it makes it very hard for competitors to take away customers."
-    },
-    {
-        question: "You find a great company, but its stock price seems very expensive compared to its earnings. Should you buy it, according to the 'Margin of Safety' principle?",
-        options: ["Yes, great companies are always worth it.", "No, you should wait for a better price."],
-        answer: "No, you should wait for a better price.",
-        explanation: "Excellent! The margin of safety principle teaches us to buy wonderful businesses only when they are trading at a fair or cheap price. This protects us if our analysis is a bit wrong."
-    },
-]
-
-const InvestmentQuiz = () => {
-    const [currentQuestion, setCurrentQuestion] = useState(0)
-    const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
-    const [result, setResult] = useState<'correct' | 'incorrect' | null>(null)
-
-    const handleSubmit = () => {
-        if (!selectedAnswer) return
-        if (selectedAnswer === quizQuestions[currentQuestion].answer) {
-            setResult('correct')
-        } else {
-            setResult('incorrect')
-        }
-    }
-
-    const handleNext = () => {
-        setResult(null)
-        setSelectedAnswer(null)
-        setCurrentQuestion((prev) => (prev + 1) % quizQuestions.length)
-    }
-
-    const q = quizQuestions[currentQuestion]
-
-    return (
-        <Card className="w-full bg-card/50 backdrop-blur-sm">
-            <CardHeader>
-                <CardTitle className="font-headline text-2xl">What Would Buffett Do?</CardTitle>
-                <CardDescription>Test your investment knowledge with this quick quiz.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-                <p className="text-lg font-semibold">{q.question}</p>
-                <RadioGroup onValueChange={setSelectedAnswer} value={selectedAnswer || ""} disabled={!!result}>
-                    {q.options.map(opt => (
-                        <div key={opt} className="flex items-center space-x-2">
-                            <RadioGroupItem value={opt} id={opt} />
-                            <Label htmlFor={opt}>{opt}</Label>
-                        </div>
-                    ))}
-                </RadioGroup>
-                
-                {result ? (
-                    <div className='space-y-4'>
-                        <Alert variant={result === 'correct' ? 'default' : 'destructive'} className={result === 'correct' ? 'border-green-500/50 bg-green-500/10' : ''}>
-                            {result === 'correct' ? <CheckCircle className="h-4 w-4" /> : <XCircle className="h-4 w-4" />}
-                            <AlertTitle>{result === 'correct' ? 'Correct!' : 'Not Quite!'}</AlertTitle>
-                            <AlertDescription>
-                                {q.explanation}
-                            </AlertDescription>
-                        </Alert>
-                        <Button onClick={handleNext} className='w-full'>Next Question</Button>
-                    </div>
-                ) : (
-                    <Button onClick={handleSubmit} disabled={!selectedAnswer} className="w-full">Check Answer</Button>
-                )}
-            </CardContent>
-        </Card>
-    )
-}
-
 
 export function InteractiveTools() {
   return (
@@ -146,7 +68,6 @@ export function InteractiveTools() {
         </p>
         <div className="grid lg:grid-cols-1 gap-8">
             <CompoundInterestCalculator />
-            <InvestmentQuiz />
         </div>
       </div>
     </section>

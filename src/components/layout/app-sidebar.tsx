@@ -19,7 +19,6 @@ const mainLinks = [
   { href: '#models', label: "Charlie's Models", icon: Zap },
   { href: '#tools', label: 'Interactive Tools', icon: Gem },
   { href: '#resources', label: 'Learning Resources', icon: BookOpen },
-  { href: '#tracker', label: 'Portfolio Tracker', icon: Target },
 ]
 
 const externalLinks = [
@@ -35,7 +34,7 @@ export function AppSidebar() {
   return (
     <Sidebar className="border-r border-border/50 backdrop-blur-sm" collapsible="icon">
       <SidebarHeader>
-        <SidebarTrigger className="self-start">MENU</SidebarTrigger>
+        <SidebarTrigger>MENU</SidebarTrigger>
       </SidebarHeader>
       <SidebarContent>
         <SidebarMenu>

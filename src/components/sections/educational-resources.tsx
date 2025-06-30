@@ -1,23 +1,20 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
-import { Book, Youtube, Dribbble } from 'lucide-react'
+import { Book, Youtube, Dribbble, ExternalLink } from 'lucide-react'
 
 const resources = {
   books: [
-    { title: "The Intelligent Investor", author: "Benjamin Graham", description: "The foundational text on value investing, often called the 'bible' of the subject." },
-    { title: "Poor Charlie's Almanack", author: "Peter D. Kaufman", description: "A collection of talks and speeches from Charlie Munger, full of wit and wisdom." },
-    { title: "The Warren Buffett Way", author: "Robert Hagstrom", description: "A detailed breakdown of the strategies and principles Buffett uses to invest." },
-    { title: "A Few Lessons for Investors and Managers", author: "Peter Bevelin", description: "Distills wisdom from Buffett and Munger into easily digestible lessons." },
+    { title: "The Intelligent Investor", author: "Benjamin Graham", description: "The foundational text on value investing, often called the 'bible' of the subject.", link: "https://amzn.to/467sAbF" },
+    { title: "Poor Charlie's Almanack", author: "Peter D. Kaufman", description: "A collection of talks and speeches from Charlie Munger, full of wit and wisdom.", link: "https://amzn.to/4kfSayc" },
+    { title: "The Warren Buffett Way", author: "Robert Hagstrom", description: "A detailed breakdown of the strategies and principles Buffett uses to invest.", link: "https://amzn.to/4ntEUZU" },
+    { title: "A Few Lessons for Investors and Managers", author: "Peter Bevelin", description: "Distills wisdom from Buffett and Munger into easily digestible lessons.", link: "https://amzn.to/4etsA7C" },
   ],
   videos: [
-    { title: "Berkshire Hathaway Annual Meetings", channel: "CNBC", description: "Watch hours of Buffett and Munger answering shareholder questions on a wide range of topics." },
-    { title: "Secret Millionaires Club", channel: "Warren Buffett", description: "An animated series for kids teaching financial lessons in a fun and engaging way." },
-    { title: "The Swedish Investor", channel: "YouTube", description: "Creates excellent animated summaries of investment books and strategies." },
+    { title: "Berkshire Hathaway Annual Meetings Archive", channel: "CNBC", description: "Watch hours of Buffett and Munger answering shareholder questions on a wide range of topics.", link: "https://buffett.cnbc.com/annual-meetings/" },
+    { title: "Secret Millionaires Club", channel: "Warren Buffett", description: "An animated series for kids teaching financial lessons in a fun and engaging way.", link: "https://pluto.tv/us/on-demand/series/630ea5ebc38c530013336d0b/season/1?utm_medium=textsearch&utm_source=google" },
   ],
   tools: [
-    { title: "CNBC Berkshire Hathaway Portfolio Tracker", provider: "CNBC", description: "See the latest holdings of Berkshire Hathaway's public stock portfolio." },
-    { title: "Value Investing Calculators", provider: "Multiple", description: "Online tools to help calculate intrinsic value, margin of safety, and other key metrics." },
+    { title: "CNBC Berkshire Hathaway Portfolio Tracker", provider: "CNBC", description: "See the latest holdings of Berkshire Hathaway's public stock portfolio.", link: "https://www.cnbc.com/berkshire-hathaway-portfolio/" },
   ]
 }
 
@@ -36,15 +33,20 @@ export function EducationalResources() {
             <h3 className="flex items-center gap-2 text-2xl font-headline font-semibold mb-4"><Book className="text-primary"/>Books</h3>
             <div className="grid md:grid-cols-2 gap-4">
               {resources.books.map(item => (
-                <Card key={item.title} className="hover:border-primary transition-colors bg-card/50 backdrop-blur-sm">
-                  <CardHeader>
-                    <CardTitle>{item.title}</CardTitle>
-                    <CardDescription>{item.author}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{item.description}</p>
-                  </CardContent>
-                </Card>
+                <Link href={item.link} key={item.title} target="_blank" rel="noopener noreferrer" className="block group">
+                  <Card className="h-full hover:border-primary transition-colors bg-card/50 backdrop-blur-sm">
+                    <CardHeader>
+                      <CardTitle className="flex items-center justify-between">
+                        {item.title}
+                        <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                      </CardTitle>
+                      <CardDescription>{item.author}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>
@@ -52,15 +54,20 @@ export function EducationalResources() {
             <h3 className="flex items-center gap-2 text-2xl font-headline font-semibold mb-4"><Youtube className="text-primary"/>Videos</h3>
             <div className="grid md:grid-cols-2 gap-4">
               {resources.videos.map(item => (
-                <Card key={item.title} className="hover:border-primary transition-colors bg-card/50 backdrop-blur-sm">
-                  <CardHeader>
-                    <CardTitle>{item.title}</CardTitle>
-                    <CardDescription>{item.channel}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{item.description}</p>
-                  </CardContent>
-                </Card>
+                 <Link href={item.link} key={item.title} target="_blank" rel="noopener noreferrer" className="block group">
+                    <Card className="h-full hover:border-primary transition-colors bg-card/50 backdrop-blur-sm">
+                      <CardHeader>
+                        <CardTitle className="flex items-center justify-between">
+                            {item.title}
+                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                        </CardTitle>
+                        <CardDescription>{item.channel}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-muted-foreground">{item.description}</p>
+                      </CardContent>
+                    </Card>
+                </Link>
               ))}
             </div>
           </div>
@@ -68,15 +75,20 @@ export function EducationalResources() {
             <h3 className="flex items-center gap-2 text-2xl font-headline font-semibold mb-4"><Dribbble className="text-primary"/>Tools</h3>
             <div className="grid md:grid-cols-2 gap-4">
               {resources.tools.map(item => (
-                <Card key={item.title} className="hover:border-primary transition-colors bg-card/50 backdrop-blur-sm">
-                  <CardHeader>
-                    <CardTitle>{item.title}</CardTitle>
-                    <CardDescription>{item.provider}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{item.description}</p>
-                  </CardContent>
-                </Card>
+                <Link href={item.link} key={item.title} target="_blank" rel="noopener noreferrer" className="block group">
+                    <Card className="h-full hover:border-primary transition-colors bg-card/50 backdrop-blur-sm">
+                    <CardHeader>
+                        <CardTitle className="flex items-center justify-between">
+                            {item.title}
+                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                        </CardTitle>
+                        <CardDescription>{item.provider}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-muted-foreground">{item.description}</p>
+                    </CardContent>
+                    </Card>
+                </Link>
               ))}
             </div>
           </div>
