@@ -1,4 +1,4 @@
-import type {Config} from 'tailwindcss';
+import type { Config } from 'tailwindcss'
 
 export default {
   darkMode: ['class'],
@@ -8,11 +8,18 @@ export default {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px',
+      },
+    },
     extend: {
       fontFamily: {
+        headline: ['"Space Grotesk"', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
-        code: ['monospace'],
+        code: ['"Source Code Pro"', 'monospace'],
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -88,12 +95,40 @@ export default {
             height: '0',
           },
         },
+        twinkle: {
+          '0%, 100%': { opacity: '0.5', transform: 'scale(1)' },
+          '50%': { opacity: '1', transform: 'scale(1.1)' },
+        },
+        'shooting-star': {
+          '0%': { transform: 'translateX(150vw) translateY(-50vh) rotate(-45deg)', opacity: '1' },
+          '100%': { transform: 'translateX(-50vw) translateY(150vh) rotate(-45deg)', opacity: '0' },
+        },
+        'float-cloud': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(150vw)' },
+        },
+        'fly-bird': {
+          '0%': { transform: 'translateX(-20vw) translateY(0) scale(0.8)', opacity: '1' },
+          '25%': { transform: 'translateX(20vw) translateY(-10vh) scale(1)' },
+          '50%': { transform: 'translateX(60vw) translateY(5vh) scale(0.9)' },
+          '75%': { transform: 'translateX(100vw) translateY(-5vh) scale(1)' },
+          '100%': { transform: 'translateX(120vw) translateY(0) scale(0.8)', opacity: '1' },
+        },
+        shine: {
+          from: { transform: 'translateX(-100%) rotate(20deg)', opacity: '0.4' },
+          to: { transform: 'translateX(100%) rotate(20deg)', opacity: '1' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        twinkle: 'twinkle 4s ease-in-out infinite',
+        'shooting-star': 'shooting-star 15s ease-in-out infinite',
+        'float-cloud': 'float-cloud 80s linear infinite',
+        'fly-bird': 'fly-bird 25s ease-in-out infinite',
+        shine: 'shine 1s ease-out',
       },
     },
   },
   plugins: [require('tailwindcss-animate')],
-} satisfies Config;
+} satisfies Config
