@@ -19,13 +19,13 @@ const ShootingStar = ({ style }: { style: React.CSSProperties }) => (
 )
 
 const Cloud = ({ style }: { style: React.CSSProperties }) => (
-  <div className="absolute" style={style}>
-    <div className="relative w-full h-full">
-        <div className="absolute bg-white/80 rounded-full" style={{ width: '60%', height: '60%', top: '20%', left: '10%' }} />
-        <div className="absolute bg-white/80 rounded-full" style={{ width: '80%', height: '80%', top: '0%', left: '30%' }} />
-        <div className="absolute bg-white/80 rounded-full" style={{ width: '60%', height: '60%', top: '20%', right: '10%' }} />
+    <div className="absolute" style={{...style, filter: 'blur(8px)'}}>
+      <div className="relative w-full h-full">
+          <div className="absolute bg-white rounded-full" style={{ width: '60%', height: '60%', top: '20%', left: '10%' }} />
+          <div className="absolute bg-white rounded-full" style={{ width: '80%', height: '80%', top: '0%', left: '30%' }} />
+          <div className="absolute bg-white rounded-full" style={{ width: '60%', height: '60%', top: '20%', right: '10%' }} />
+      </div>
     </div>
-  </div>
 );
 
 
@@ -78,7 +78,7 @@ export function AnimatedBackground() {
           width: `${size}px`,
           height: `${size}px`,
           animation: `float-cloud ${Math.random() * 60 + 60}s linear infinite ${Math.random() * 20}s`,
-          opacity: `${Math.random() * 0.6 + 0.4}`
+          opacity: `${Math.random() * 0.4 + 0.6}`
         };
       });
       setClouds(newClouds);
