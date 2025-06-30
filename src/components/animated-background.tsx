@@ -18,12 +18,16 @@ const ShootingStar = ({ style }: { style: React.CSSProperties }) => (
   ></div>
 )
 
-const Cloud = ({ style, className }: { style: React.CSSProperties; className?: string }) => (
-  <div
-    className={cn("absolute bg-white/80 rounded-full", className)}
-    style={style}
-  ></div>
-)
+const Cloud = ({ style }: { style: React.CSSProperties }) => (
+  <div className="absolute" style={style}>
+    <div className="relative bg-white/80 rounded-full w-full h-full">
+      <div className="absolute bg-white/80 rounded-full" style={{ width: '60%', height: '120%', top: '-60%', left: '10%' }} />
+      <div className="absolute bg-white/80 rounded-full" style={{ width: '80%', height: '150%', top: '-75%', left: '30%' }} />
+      <div className="absolute bg-white/80 rounded-full" style={{ width: '60%', height: '120%', top: '-60%', right: '10%' }} />
+    </div>
+  </div>
+);
+
 
 const Bird = ({ style }: { style: React.CSSProperties }) => (
   <div className="absolute text-foreground" style={style}>
@@ -40,7 +44,7 @@ export function AnimatedBackground() {
   const { theme } = useTheme()
   const [stars, setStars] = useState<React.CSSProperties[]>([])
   const [shootingStars, setShootingStars] = useState<React.CSSProperties[]>([])
-  const [clouds, setClouds] = useState<{ style: React.CSSProperties, className: string }[]>([])
+  const [clouds, setClouds] = useState<React.CSSProperties[]>([])
   const [birds, setBirds] = useState<React.CSSProperties[]>([])
 
   useEffect(() => {
@@ -69,15 +73,12 @@ export function AnimatedBackground() {
       const newClouds = Array.from({ length: 15 }).map(() => {
         const size = Math.random() * 100 + 50;
         return {
-          style: {
-            top: `${Math.random() * 60}%`,
-            left: '0%',
-            width: `${size}px`,
-            height: `${size / 2}px`,
-            animation: `float-cloud ${Math.random() * 60 + 60}s linear infinite ${Math.random() * 20}s`,
-            opacity: `${Math.random() * 0.5 + 0.3}`
-          },
-          className: `rounded-[${Math.random() * 20 + 40}%]`
+          top: `${Math.random() * 60}%`,
+          left: '0%',
+          width: `${size}px`,
+          height: `${size / 2}px`,
+          animation: `float-cloud ${Math.random() * 60 + 60}s linear infinite ${Math.random() * 20}s`,
+          opacity: `${Math.random() * 0.6 + 0.4}`
         };
       });
       setClouds(newClouds);
@@ -109,7 +110,7 @@ export function AnimatedBackground() {
         </div>
       ) : (
         <div id="day-sky" className="relative w-full h-full">
-          {clouds.map(({style, className}, i) => <Cloud key={`cloud-${i}`} style={style} className={className} />)}
+          {clouds.map((style, i) => <Cloud key={`cloud-${i}`} style={style} />)}
           {birds.map((style, i) => <Bird key={`bird-${i}`} style={style} />)}
         </div>
       )}
