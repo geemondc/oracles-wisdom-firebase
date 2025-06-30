@@ -136,22 +136,22 @@
   }
 }
 
-@keyframes fly-bird {
+@keyframes fly-paper-plane {
   0% {
-    transform: translateX(-20vw) translateY(0) scale(0.8);
+    transform: translateX(-20vw) translateY(0) scale(0.8) rotate(20deg);
     opacity: 1;
   }
   25% {
-    transform: translateX(20vw) translateY(-10vh) scale(1);
+    transform: translateX(20vw) translateY(-10vh) scale(1) rotate(0deg);
   }
   50% {
-    transform: translateX(60vw) translateY(5vh) scale(0.9);
+    transform: translateX(60vw) translateY(5vh) scale(0.9) rotate(-20deg);
   }
   75% {
-    transform: translateX(100vw) translateY(-5vh) scale(1);
+    transform: translateX(100vw) translateY(-5vh) scale(1) rotate(0deg);
   }
   100% {
-    transform: translateX(120vw) translateY(0) scale(0.8);
+    transform: translateX(120vw) translateY(0) scale(0.8) rotate(20deg);
     opacity: 1;
   }
 }

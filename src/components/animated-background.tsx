@@ -2,6 +2,7 @@
 
 import { useTheme } from '@/components/theme-provider'
 import { cn } from '@/lib/utils'
+import { Send } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const Star = ({ style }: { style: React.CSSProperties }) => (
@@ -29,14 +30,9 @@ const Cloud = ({ style }: { style: React.CSSProperties }) => (
 );
 
 
-const Bird = ({ style }: { style: React.CSSProperties }) => (
+const PaperPlane = ({ style }: { style: React.CSSProperties }) => (
   <div className="absolute text-foreground" style={style}>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22c-5.523 0-10-4.477-10-10S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zM12 2c-3.333 3.333-5 5-5 5"/>
-        <path d="M12 2c3.333 3.333 5 5 5 5"/>
-        <path d="M7 7c-3.333 3.333-5 5-5 5"/>
-        <path d="M17 7c3.333 3.333 5 5 5 5"/>
-    </svg>
+    <Send className="w-6 h-6" />
   </div>
 )
 
@@ -45,7 +41,7 @@ export function AnimatedBackground() {
   const [stars, setStars] = useState<React.CSSProperties[]>([])
   const [shootingStars, setShootingStars] = useState<React.CSSProperties[]>([])
   const [clouds, setClouds] = useState<React.CSSProperties[]>([])
-  const [birds, setBirds] = useState<React.CSSProperties[]>([])
+  const [paperPlanes, setPaperPlanes] = useState<React.CSSProperties[]>([])
 
   useEffect(() => {
     // Only run on client
@@ -84,20 +80,20 @@ export function AnimatedBackground() {
       setClouds(newClouds);
     };
 
-    const generateBirds = () => {
-      const newBirds = Array.from({ length: 5 }).map(() => ({
+    const generatePaperPlanes = () => {
+      const newPlanes = Array.from({ length: 5 }).map(() => ({
         top: `${Math.random() * 40 + 5}%`,
         left: '0',
-        animation: `fly-bird ${Math.random() * 15 + 20}s linear infinite ${Math.random() * 25}s`,
+        animation: `fly-paper-plane ${Math.random() * 15 + 20}s linear infinite ${Math.random() * 25}s`,
       }));
-      setBirds(newBirds)
+      setPaperPlanes(newPlanes)
     };
 
 
     generateStars()
     generateShootingStars()
     generateClouds()
-    generateBirds()
+    generatePaperPlanes()
 
   }, [])
 
@@ -111,7 +107,7 @@ export function AnimatedBackground() {
       ) : (
         <div id="day-sky" className="relative w-full h-full">
           {clouds.map((style, i) => <Cloud key={`cloud-${i}`} style={style} />)}
-          {birds.map((style, i) => <Bird key={`bird-${i}`} style={style} />)}
+          {paperPlanes.map((style, i) => <PaperPlane key={`plane-${i}`} style={style} />)}
         </div>
       )}
     </div>
