@@ -30,11 +30,11 @@ export function EducationalResources() {
         </p>
         <div className="grid gap-8">
           <div>
-            <h3 className="flex items-center gap-2 text-2xl font-headline font-semibold mb-4"><Book className="text-primary"/>Books</h3>
+            <h3 className="flex items-center justify-center md:justify-start gap-2 text-2xl font-headline font-semibold mb-4"><Book className="text-primary"/>Books</h3>
             <div className="grid md:grid-cols-2 gap-4">
               {resources.books.map(item => (
                 <Link href={item.link} key={item.title} target="_blank" rel="noopener noreferrer" className="block group">
-                  <Card className="h-full hover:border-primary transition-colors bg-card/50 backdrop-blur-sm">
+                  <Card className="h-full hover:border-primary transition-colors bg-card/50 backdrop-blur-sm text-left">
                     <CardHeader>
                       <CardTitle className="flex items-center justify-between">
                         {item.title}
@@ -51,11 +51,11 @@ export function EducationalResources() {
             </div>
           </div>
           <div>
-            <h3 className="flex items-center gap-2 text-2xl font-headline font-semibold mb-4"><Youtube className="text-primary"/>Videos</h3>
+            <h3 className="flex items-center justify-center md:justify-start gap-2 text-2xl font-headline font-semibold mb-4"><Youtube className="text-primary"/>Videos</h3>
             <div className="grid md:grid-cols-2 gap-4">
               {resources.videos.map(item => (
                  <Link href={item.link} key={item.title} target="_blank" rel="noopener noreferrer" className="block group">
-                    <Card className="h-full hover:border-primary transition-colors bg-card/50 backdrop-blur-sm">
+                    <Card className="h-full hover:border-primary transition-colors bg-card/50 backdrop-blur-sm text-left">
                       <CardHeader>
                         <CardTitle className="flex items-center justify-between">
                             {item.title}
@@ -72,11 +72,11 @@ export function EducationalResources() {
             </div>
           </div>
           <div>
-            <h3 className="flex items-center gap-2 text-2xl font-headline font-semibold mb-4"><Dribbble className="text-primary"/>Tools</h3>
-            <div className="grid md:grid-cols-2 gap-4">
+            <h3 className="flex items-center justify-center md:justify-start gap-2 text-2xl font-headline font-semibold mb-4"><Dribbble className="text-primary"/>Tools</h3>
+            <div className="flex justify-center">
               {resources.tools.map(item => (
-                <Link href={item.link} key={item.title} target="_blank" rel="noopener noreferrer" className="block group">
-                    <Card className="h-full hover:border-primary transition-colors bg-card/50 backdrop-blur-sm">
+                <Link href={item.link} key={item.title} target="_blank" rel="noopener noreferrer" className="block group w-full md:w-1/2">
+                    <Card className="h-full hover:border-primary transition-colors bg-card/50 backdrop-blur-sm text-left">
                     <CardHeader>
                         <CardTitle className="flex items-center justify-between">
                             {item.title}
