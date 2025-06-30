@@ -20,10 +20,10 @@ const ShootingStar = ({ style }: { style: React.CSSProperties }) => (
 
 const Cloud = ({ style }: { style: React.CSSProperties }) => (
   <div className="absolute" style={style}>
-    <div className="relative bg-white/80 rounded-full w-full h-full">
-      <div className="absolute bg-white/80 rounded-full" style={{ width: '60%', height: '120%', top: '-60%', left: '10%' }} />
-      <div className="absolute bg-white/80 rounded-full" style={{ width: '80%', height: '150%', top: '-75%', left: '30%' }} />
-      <div className="absolute bg-white/80 rounded-full" style={{ width: '60%', height: '120%', top: '-60%', right: '10%' }} />
+    <div className="relative w-full h-full">
+        <div className="absolute bg-white/80 rounded-full" style={{ width: '60%', height: '60%', top: '20%', left: '10%' }} />
+        <div className="absolute bg-white/80 rounded-full" style={{ width: '80%', height: '80%', top: '0%', left: '30%' }} />
+        <div className="absolute bg-white/80 rounded-full" style={{ width: '60%', height: '60%', top: '20%', right: '10%' }} />
     </div>
   </div>
 );
@@ -76,7 +76,7 @@ export function AnimatedBackground() {
           top: `${Math.random() * 60}%`,
           left: '0%',
           width: `${size}px`,
-          height: `${size / 2}px`,
+          height: `${size}px`,
           animation: `float-cloud ${Math.random() * 60 + 60}s linear infinite ${Math.random() * 20}s`,
           opacity: `${Math.random() * 0.6 + 0.4}`
         };
