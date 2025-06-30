@@ -2,7 +2,6 @@
 
 import { useTheme } from '@/components/theme-provider'
 import { cn } from '@/lib/utils'
-import { Send } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const Star = ({ style }: { style: React.CSSProperties }) => (
@@ -22,17 +21,27 @@ const ShootingStar = ({ style }: { style: React.CSSProperties }) => (
 const Cloud = ({ style }: { style: React.CSSProperties }) => (
     <div className="absolute" style={{...style, filter: 'blur(8px)'}}>
       <div className="relative w-full h-full">
-          <div className="absolute bg-white rounded-full" style={{ width: '60%', height: '60%', top: '20%', left: '10%' }} />
-          <div className="absolute bg-white rounded-full" style={{ width: '80%', height: '80%', top: '0%', left: '30%' }} />
-          <div className="absolute bg-white rounded-full" style={{ width: '60%', height: '60%', top: '20%', right: '10%' }} />
+          <div className="absolute bg-white/80 rounded-full" style={{ width: '60%', height: '60%', top: '20%', left: '10%' }} />
+          <div className="absolute bg-white/80 rounded-full" style={{ width: '80%', height: '80%', top: '0%', left: '30%' }} />
+          <div className="absolute bg-white/80 rounded-full" style={{ width: '60%', height: '60%', top: '20%', right: '10%' }} />
       </div>
     </div>
 );
 
-
-const PaperPlane = ({ style }: { style: React.CSSProperties }) => (
-  <div className="absolute text-foreground" style={style}>
-    <Send className="w-6 h-6" />
+const Butterfly = ({ style, flutterStyle }: { style: React.CSSProperties; flutterStyle: React.CSSProperties }) => (
+  <div className="absolute" style={style}>
+    <div style={flutterStyle}>
+      <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="w-6 h-6 text-foreground"
+      >
+          <path d="M12,2L8,7.2V11H6V8L2,12L6,16V13H8V16.8L12,22L16,16.8V13H18V16L22,12L18,8V11H16V7.2L12,2Z" />
+      </svg>
+    </div>
   </div>
 )
 
@@ -41,7 +50,7 @@ export function AnimatedBackground() {
   const [stars, setStars] = useState<React.CSSProperties[]>([])
   const [shootingStars, setShootingStars] = useState<React.CSSProperties[]>([])
   const [clouds, setClouds] = useState<React.CSSProperties[]>([])
-  const [paperPlanes, setPaperPlanes] = useState<React.CSSProperties[]>([])
+  const [butterflies, setButterflies] = useState<{ pathStyle: React.CSSProperties; flutterStyle: React.CSSProperties }[]>([])
 
   useEffect(() => {
     // Only run on client
@@ -80,25 +89,32 @@ export function AnimatedBackground() {
       setClouds(newClouds);
     };
 
-    const generatePaperPlanes = () => {
-      const newPlanes = Array.from({ length: 5 }).map(() => ({
-        top: `${Math.random() * 40 + 5}%`,
-        left: '0',
-        animation: `fly-paper-plane ${Math.random() * 15 + 20}s linear infinite ${Math.random() * 25}s`,
+    const generateButterflies = () => {
+      const newButterflies = Array.from({ length: 7 }).map(() => ({
+        pathStyle: {
+          top: `${Math.random() * 80 + 10}%`,
+          left: '0',
+          animation: `fly-butterfly ${Math.random() * 20 + 20}s linear infinite ${Math.random() * 30}s`,
+          transform: `scale(${Math.random() * 0.4 + 0.6})`,
+          opacity: `${Math.random() * 0.5 + 0.5}`
+        },
+        flutterStyle: {
+          animation: `flutter ${Math.random() * 0.2 + 0.3}s ease-in-out infinite alternate`,
+        }
       }));
-      setPaperPlanes(newPlanes)
+      setButterflies(newButterflies)
     };
 
 
     generateStars()
     generateShootingStars()
     generateClouds()
-    generatePaperPlanes()
+    generateButterflies()
 
   }, [])
 
   return (
-    <div className="fixed inset-0 z-[-1] w-full h-full overflow-hidden transition-colors duration-500 bg-background">
+    <div className="fixed inset-0 z-[-1] w-full h-full overflow-hidden transition-colors duration-500 bg-transparent">
       {theme === 'dark' ? (
         <div id="night-sky" className="relative w-full h-full">
           {stars.map((style, i) => <Star key={`star-${i}`} style={style} />)}
@@ -107,7 +123,7 @@ export function AnimatedBackground() {
       ) : (
         <div id="day-sky" className="relative w-full h-full">
           {clouds.map((style, i) => <Cloud key={`cloud-${i}`} style={style} />)}
-          {paperPlanes.map((style, i) => <PaperPlane key={`plane-${i}`} style={style} />)}
+          {butterflies.map((b, i) => <Butterfly key={`butterfly-${i}`} style={b.pathStyle} flutterStyle={b.flutterStyle} />)}
         </div>
       )}
     </div>

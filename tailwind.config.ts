@@ -107,13 +107,6 @@ export default {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(150vw)' },
         },
-        'fly-paper-plane': {
-          '0%': { transform: 'translateX(-20vw) translateY(0) scale(0.8) rotate(20deg)', opacity: '1' },
-          '25%': { transform: 'translateX(20vw) translateY(-10vh) scale(1) rotate(0deg)' },
-          '50%': { transform: 'translateX(60vw) translateY(5vh) scale(0.9) rotate(-20deg)' },
-          '75%': { transform: 'translateX(100vw) translateY(-5vh) scale(1) rotate(0deg)' },
-          '100%': { transform: 'translateX(120vw) translateY(0) scale(0.8) rotate(20deg)', opacity: '1' },
-        },
         shine: {
           from: { transform: 'translateX(-100%) rotate(20deg)', opacity: '0.4' },
           to: { transform: 'translateX(100%) rotate(20deg)', opacity: '1' },
@@ -125,7 +118,6 @@ export default {
         twinkle: 'twinkle 4s ease-in-out infinite',
         'shooting-star': 'shooting-star 15s ease-in-out infinite',
         'float-cloud': 'float-cloud 80s linear infinite',
-        'fly-paper-plane': 'fly-paper-plane 25s linear infinite',
         shine: 'shine 1s ease-out',
       },
     },

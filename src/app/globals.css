@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 210 70% 82%;
+    --background: 210 70% 95%;
     --foreground: 210 100% 10%;
     --card: 210 20% 98%;
     --card-foreground: 210 100% 10%;
@@ -136,25 +136,29 @@
   }
 }
 
-@keyframes fly-paper-plane {
+@keyframes fly-butterfly {
   0% {
-    transform: translateX(-20vw) translateY(0) scale(0.8) rotate(20deg);
-    opacity: 1;
+    transform: translateX(-20vw) translateY(0vh) rotate(10deg);
   }
   25% {
-    transform: translateX(20vw) translateY(-10vh) scale(1) rotate(0deg);
+    transform: translateX(20vw) translateY(-10vh) rotate(-10deg);
   }
   50% {
-    transform: translateX(60vw) translateY(5vh) scale(0.9) rotate(-20deg);
+    transform: translateX(60vw) translateY(5vh) rotate(15deg);
   }
   75% {
-    transform: translateX(100vw) translateY(-5vh) scale(1) rotate(0deg);
+    transform: translateX(100vw) translateY(-5vh) rotate(-5deg);
   }
   100% {
-    transform: translateX(120vw) translateY(0) scale(0.8) rotate(20deg);
-    opacity: 1;
+    transform: translateX(120vw) translateY(0vh) rotate(10deg);
   }
 }
+
+@keyframes flutter {
+  0% { transform: translateY(-5px) rotate(5deg); }
+  100% { transform: translateY(5px) rotate(-5deg); }
+}
+
 
 @keyframes shine {
     from {
