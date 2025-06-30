@@ -5,7 +5,7 @@ import { Toaster } from '@/components/ui/toaster'
 import { AnimatedBackground } from '@/components/animated-background'
 
 export const metadata: Metadata = {
-  title: "Oracle's Wisdom",
+  title: "Oracle Outpost",
   description: "Warren Buffett & Charlie Munger Investment Guide",
 };
 

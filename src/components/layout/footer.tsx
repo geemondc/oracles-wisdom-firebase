@@ -20,7 +20,7 @@ export function Footer() {
           ))}
         </div>
         <p className="mt-8 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Oracle's Wisdom. All Rights Reserved.
+          © {new Date().getFullYear()} Oracle Outpost. All Rights Reserved.
         </p>
       </div>
     </footer>

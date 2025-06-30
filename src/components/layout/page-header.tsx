@@ -14,7 +14,7 @@ export function PageHeader() {
             </SidebarTrigger>
         </div>
         <h1 className="text-xl sm:text-2xl font-headline text-glow whitespace-nowrap">
-            Oracle's Wisdom
+            Oracle Outpost
         </h1>
         <div className="flex items-center justify-end gap-2">
             <ThemeToggle />
