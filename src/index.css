@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 222 47% 5%;
+    --foreground: 213 31% 91%;
+
+    --card: 222 40% 8%;
+    --card-foreground: 213 31% 91%;
+
+    --popover: 222 40% 8%;
+    --popover-foreground: 213 31% 91%;
+
+    --primary: 43 96% 56%;
+    --primary-foreground: 222 47% 5%;
+
+    --secondary: 222 30% 14%;
+    --secondary-foreground: 213 31% 85%;
+
+    --muted: 222 25% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 174 60% 45%;
+    --accent-foreground: 222 47% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 20% 18%;
+    --input: 222 20% 18%;
+    --ring: 43 96% 56%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 222 45% 6%;
+    --sidebar-foreground: 213 31% 80%;
+    --sidebar-primary: 43 96% 56%;
+    --sidebar-primary-foreground: 222 47% 5%;
+    --sidebar-accent: 222 30% 12%;
+    --sidebar-accent-foreground: 213 31% 91%;
+    --sidebar-border: 222 20% 15%;
+    --sidebar-ring: 43 96% 56%;
+
+    --oracle-gold: 43 96% 56%;
+    --oracle-gold-dim: 43 80% 40%;
+    --oracle-teal: 174 60% 45%;
+    --oracle-teal-dim: 174 40% 30%;
+    --star-color: 43 30% 80%;
+  }
+
+  .light {
+    --background: 200 60% 72%;
+    --foreground: 222 47% 11%;
+
+    --card: 200 40% 92%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 200 40% 94%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 43 96% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 25% 85%;
+    --secondary-foreground: 222 30% 20%;
+
+    --muted: 200 20% 88%;
+    --muted-foreground: 215 15% 30%;
+
+    --accent: 174 55% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 200 20% 78%;
+    --input: 200 20% 80%;
+    --ring: 43 96% 40%;
+
+    --sidebar-background: 200 35% 90%;
+    --sidebar-foreground: 222 30% 20%;
+    --sidebar-primary: 43 96% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 25% 85%;
+    --sidebar-accent-foreground: 222 30% 15%;
+    --sidebar-border: 200 20% 78%;
+    --sidebar-ring: 43 96% 40%;
+
+    --oracle-gold: 43 96% 40%;
+    --oracle-gold-dim: 43 80% 30%;
+    --oracle-teal: 174 55% 35%;
+    --oracle-teal-dim: 174 40% 25%;
+    --star-color: 43 30% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+@layer utilities {
+  .text-glow-gold {
+    text-shadow: 0 0 20px hsl(43 96% 56% / 0.4), 0 0 60px hsl(43 96% 56% / 0.15);
+  }
+
+  .text-glow-teal {
+    text-shadow: 0 0 20px hsl(174 60% 45% / 0.4), 0 0 60px hsl(174 60% 45% / 0.15);
+  }
+
+  .border-glow-gold {
+    box-shadow: 0 0 12px hsl(43 96% 56% / 0.1), inset 0 1px 0 hsl(43 96% 56% / 0.05);
+  }
+
+  .border-glow-teal {
+    box-shadow: 0 0 12px hsl(174 60% 45% / 0.1), inset 0 1px 0 hsl(174 60% 45% / 0.05);
+  }
+}
+
+/* Star field animation */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+@keyframes drift {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100vh); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out both;
+}
